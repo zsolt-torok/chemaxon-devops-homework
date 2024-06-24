@@ -13,19 +13,18 @@ output "nat_gateway_id" {
   value       = aws_nat_gateway.this.id
 }
 
-output "subnets" {
+output "subnet_ids" {
+  description = "The IDs of the public and private subnets"
   value = {
-    private = aws_subnet.private
-    public  = aws_subnet.public
+    public  = aws_subnet.public[*].id
+    private = aws_subnet.private[*].id
   }
 }
 
-output "public_route_table_id" {
-  description = "The ID of the public route table"
-  value       = aws_route_table.public.id
-}
-
-output "private_route_table_id" {
-  description = "The ID of the private route table"
-  value       = aws_route_table.private.id
+output "route_table_ids" {
+  description = "The IDs of the public and private route tables"
+  value = {
+    public = aws_route_table.public.id
+    private = aws_route_table.private.id
+  }
 }

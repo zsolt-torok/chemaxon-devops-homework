@@ -47,13 +47,9 @@ output "nat_gateway_id" {
 }
 
 output "subnets" {
-  value = module.vpc.subnets
+  value = module.vpc.subnet_ids
 }
 
-output "public_route_table_id" {
-  value = module.vpc.public_route_table_id
-}
-
-output "private_route_table_id" {
-  value = module.vpc.private_route_table_id
+output "route_table_id" {
+  value = module.vpc.route_table_ids
 }
